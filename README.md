@@ -13,7 +13,7 @@ Note: This HUD-style portfolio card is designed for desktop screens and is not f
 
 **Features**
 
-•	Player/Developer Info Panel: Displays developer ID, class, guild affiliation, and title.
+•	Developer Info Panel: Displays developer ID, class, guild affiliation, and title.
 
 •	Core Attributes: Animated skill bars for logical reasoning, frontend fundamentals, debugging awareness, and other key development traits.
 
@@ -25,7 +25,7 @@ Note: This HUD-style portfolio card is designed for desktop screens and is not f
 
 •	Futuristic Design: Neon glow, trapezoid panels, hexagon containers, and parallax-like depth for immersive HUD feel.
 
-•	Responsive & Modular: Fully structured with HTML, CSS, and JavaScript for easy adaptation and scalability.
+•	Modular: Fully structured with HTML, CSS, and JavaScript for easy adaptation and scalability.
 
 
 **Technologies Used**
