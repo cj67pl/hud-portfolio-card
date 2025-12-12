@@ -1,0 +1,915 @@
+@font-face {
+  font-family: "alexana-regular";
+  src: url("https://files.fontsme.com/a/683/14683/file/Alexana.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
+
+
+:root {
+    --bg: #030712;
+    --cy: #00eaff;
+    --cy2: #5af3ff;
+    --glow: 0 0 12px rgba(0, 234, 255, 0.6), 0 0 24px rgba(0, 234, 255, 0.3);
+    --panel-bg: rgba(255, 255, 255, 0.06);
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    scroll-behavior: auto;
+    background: var(--bg);
+    font-family: 'Courier New', monospace;
+    text-align: center;
+
+}
+
+
+/* ========================= */
+/* ===== Hud Container ===== */
+/* ========================= */
+
+.container, .panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 700px;
+    height: 400px;
+    border: none;
+    position: relative;   
+}
+
+.shadow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    /* clip-path: polygon(0% 0%, 100% 0, 100% 68%, 80% 100%, 0 99%, 0 32%, 20% 0); */
+    box-shadow: 0 0 25px rgba(0, 234, 255, 0.6), 0 0 35px rgba(0, 234, 255, 0.3);
+
+}
+
+.rectangle-top-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 90px;
+    border: 1px solid var(--cy2);
+    border-bottom: none;
+    border-right: none;
+}
+
+
+.rectangle-top {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 500px;
+    height: 200px;
+    border: 1px solid var(--cy2);
+    border-bottom: none;
+    border-left: none;
+
+}
+
+.panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+.hexagon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+    clip-path: polygon(0% 0%, 100% 0, 100% 68%, 80% 100%, 0 99%, 0 32%, 20% 0);
+    background-color: var(--cy);
+}
+
+.hexagon.outer {
+        filter: drop-shadow(0 0 12px rgba(0, 234, 255, 0.6))
+        drop-shadow(0 0 24px rgba(0, 234, 255, 0.3));
+}
+
+.hexagon .inner{
+    position: absolute;
+    width: 99.5%;
+    height: 99.5%;
+    clip-path: polygon(50% 1%, 99.5% 1%, 99.5% 68%, 80% 99%, .5% 98%, .5% 32.5%, 20% 1%);
+    background-color: var(--bg);
+}
+
+.hexagon .trapezoid {
+    position: absolute;
+    height:5%;
+    width: 30%;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+    background-color: var(--cy);
+    transform: rotate(90deg);
+}
+
+.hexagon .trapezoid.left {
+    top: 62%;
+    left: -13%;
+}
+
+.hexagon .trapezoid.right {
+    transform: rotate(-90deg);
+    top: 32%;
+    right: -13%;
+}
+
+
+.panel .parallelogram {
+    z-index: 1;
+    position: absolute;
+    top: 7%;
+    left: 22%;
+    width: 40%;
+    height: 5%;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
+    background-color: var(--cy);
+
+}
+
+
+.rectangle-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    width: 400px;
+    height: 200px;
+    border: 1px solid var(--cy2);
+    border-top: none;
+    border-right: none;
+    
+}
+
+
+.rectangle-bottom .right-dot, .left-dot {
+    position: absolute;    
+    top: -6px;
+    left: -4px;
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--cy2);
+    border-radius: 50%;
+}
+
+.rectangle-bottom .left-dot.first, .left-dot.second, .left-dot.third {
+    top: 196px;
+    left: 445px;
+    background-color: var(--cy2);
+}
+
+.rectangle-bottom .left-dot.left-dot.second {
+    left: 465px;
+}
+
+.rectangle-bottom .left-dot.left-dot.third {
+    left: 485px;
+}
+
+
+.rectangle-bottom-box {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 20px;
+    border: 1px solid var(--cy2);
+    border-top: none;
+    border-left: none;
+}
+
+
+
+
+
+/* ========================= */
+/* ===== Main  Details ===== */
+/* ========================= */
+
+.text-content {
+    position: absolute;
+    top: 20px;
+    
+}
+
+
+
+.information {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: start; */
+    width: 100%;
+    
+}
+
+.information .guild-name-box {
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 2rem;
+    width: 70%;
+    cursor: pointer;
+ }
+
+.information .guild-name-box:hover {
+    /* box-shadow: var(--glow); */
+    text-shadow: var(--glow);
+}
+
+.information .guild-name-box img {
+    width: 70px;
+    height: 70px;
+    
+}
+
+.active-logo {
+    border-radius: 50px;
+    box-shadow: var(--glow);
+}
+
+.information .guild-name-box .guild-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--cy2);
+    /* margin: 0 10px 0 100px; */
+}
+
+.information-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.information-details .detail-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    
+    
+}
+
+.information-details .detail-container span:hover{
+    color: var(--cy);
+    text-shadow: 0 0 10px #05ebf3, 0 0 20px #a9effc, 0 0 30px #009de6;
+}
+
+
+
+.information-details .detail-container h3, span{
+    margin: 5px 10px;
+    cursor: pointer;
+}
+
+
+.information-details .detail-container .technologies {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 300px;
+    height: 70px;
+    margin-left: 30px;
+}
+
+.information-details .detail-container.tools{
+    margin-top: 20px;
+    /* padding: 10px; */
+    align-items: flex-start;
+}
+
+.information-details .tools .technologies-track {
+    display: inline-flex;
+    will-change: transform;
+
+}
+
+
+.information-details .tools .technologies .tech-container{
+    width: 56px;
+    height: 65px;
+    display: inline-block;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+
+}
+
+abbr[data-tip] {
+    position: relative;
+    display: inline-block;
+}
+
+.information-details .tools .technologies .tech-container abbr[data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0; 
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+    letter-spacing: .1rem;
+}
+
+.information-details .tools .technologies .tech-container abbr[data-tip]:hover::after {
+  opacity: 1;
+  
+}
+
+
+.information-details .tools .technologies .tech-container img{
+    width: 25px;
+    height: 25px;
+}
+
+.information-details .tools .technologies .tech-container .active{
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 9px 3px rgba(0, 179, 250, 0.726);
+    border-radius: 50%;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+
+}
+
+
+/* ========================= */
+/* ====== Hud Buttons ====== */
+/* ========================= */
+
+.button-container {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.extend-buttons{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.extend-buttons.skills {
+    background-color: #0a8696;
+    border: 1px solid #002d57;
+    box-shadow: 0px 0px 9px 2px rgba(0, 179, 250, 0.726);
+   
+}
+
+.extend-buttons.skills:hover {
+    box-shadow: 0 0 15px var(--cy2), 0 0 25px #00ccff;
+}
+
+.extend-buttons.projects {
+    background-color: #bf00ff;
+    border: 1px solid #4a0153;
+    box-shadow: 0 0 9px 2px #d45aff;
+   
+}
+
+.extend-buttons.projects:hover {
+    box-shadow: 0 0 15px #d45aff, 0 0 25px #bf00ff;
+  
+}
+
+.extend-buttons.contacts {
+    background-color: #0e6b3d;
+    border: 1px solid #01180b;
+    box-shadow: 0 0 9px #00ff7f;
+   
+}
+
+.extend-buttons.contacts:hover {
+    box-shadow: 0 0 15px #5affaa, 0 0 25px #00ff7f;
+  
+}
+
+
+
+
+
+/* -------------------------------------------------------------- */
+/* ========================= */
+/* ===  Guild Info Popup === */
+/* ========================= */
+
+.pop-up-container {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: -100px;
+    left: -400px;
+    /* background-color: #faa3a363; */
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+.active-guild-info {
+    opacity: 1;
+}
+
+.line-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 210px;
+    /* background-color: #d9dffce3; */
+
+}
+
+.line-container .line-1, .line-2 {
+    background-color: var(--cy);
+    height: 1px;
+    width: 200px;
+    transform: rotate(35deg);
+    transform-origin: left bottom;
+    backface-visibility: hidden;
+    position: absolute;
+    right: 5px;
+    top: 80px;
+    box-shadow: 
+        0 0 8px #00eaff,
+        0 0 16px #00eaff,
+        0 0 32px #00eaff,
+        0 0 48px #00eaff,
+        0 0 64px #00eaff;
+}
+
+.line-container .line-2 {
+    transform: rotate(0);
+    width: 55px;
+    left: 40px;
+}
+
+.line-container .left-dot {
+    position: absolute;
+    left: 32px;
+    top: 77px;
+    box-shadow: 
+        0 0 8px #00eaff,
+        0 0 16px #00eaff,
+        0 0 32px #00eaff,
+        0 0 48px #00eaff,
+        0 0 64px #00eaff;
+}
+
+
+.pop-up-box {
+    position: absolute;
+    left: 20px;
+    width: 330px;
+    height: 530px;
+    /* background-color: #000000; */
+    
+    border-radius: 10px;
+    box-shadow: var(--glow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up-box .with-border {
+    width: 280px;
+    height: 480px;
+    border: 1px solid var(--cy);
+    border-radius: 5px;
+    background-color: #050613;
+    font-size: 14px;
+    color: white;
+    /* text-align: justify; */
+}
+
+.pop-up-box .with-border .logo {
+    width: 50%;
+    height: auto;
+    margin-top: 20px;
+    animation: flipBackForth 2s infinite alternate;
+}
+
+@keyframes flipBackForth {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+.pop-up-box .with-border h4, p {
+    margin: 20px 20px;
+    
+}
+
+.pop-up-box .with-border h4 {
+    text-shadow: var(--glow);
+    font-size: 18px;
+}
+
+
+/* ========================= */
+/* = Developer Info  Popup = */
+/* ========================= */
+
+.pop-up-container.developer-info {
+    /* opacity: 1; */
+    top: 0;
+}
+
+.developer-info-popup {
+    opacity: 1;
+}
+
+.developer-info .pop-up-box {
+    height: 400px;
+}
+
+.developer-info .pop-up-box .with-border{
+    height: 350px;
+}
+
+.developer-info .pop-up-box .with-border img {
+    position: relative;
+    animation: moveSide 2s infinite alternate ease-in-out;
+    width: 50%;
+    height: auto;
+}
+
+@keyframes moveSide {
+    0% {
+        transform: translate(-80px);
+    }
+    100% {
+        transform: translate(80px);
+    }
+}
+
+.developer-info .line-container {
+    top: 10px;
+    left: 300px;
+    width: 400px;
+    /* background-color: rgba(255, 255, 255, 0.281); */
+}
+
+.developer-info .line-container .line-1{
+    transform: rotate(25deg);
+}
+
+.developer-info .line-container .line-2{
+    width: 155px;
+}
+
+
+
+
+/* ========================= */
+/* =====  Skills Popup ===== */
+/* ========================= */
+
+
+.developer-info.skills {
+    /* height: 900px; */
+    opacity: 0;
+    left: 750px;
+    top: -130px;
+    pointer-events: none;
+    
+}
+
+.developer-info.show-button-content {
+    opacity: 1;
+    z-index: 1;
+}
+
+.skills .pop-up-box, .projects .pop-up-box, .contacts .pop-up-box {
+    height: 500px;
+}
+
+.skills .pop-up-box .with-border, .projects .pop-up-box .with-border {
+    height: 450px;
+}
+
+.skills .pop-up-box .attribute, .projects .pop-up-box .attribute {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.attribute span {
+    display: block;
+    font-size: 0.85em;
+}
+
+.bar-bg {
+    margin: auto;
+    width: 90%;
+    height: 8px;
+    background: #111;
+    border: 1px solid #00ffff60;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #00ffff;
+    width: 0;
+    border-radius: 5px;
+}
+
+.show-button-content .bar-fill {
+    animation: fillBar 2s forwards;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: var(--width);
+    }
+}
+
+
+.skills .line-container, .projects .line-container, .contacts .line-container{
+    transform: rotateY(-180deg);
+    left: -150px;
+    top: 20px;
+    width: 250px;
+    /* background-color: #999d9e4a; */
+}
+
+.skills .line-container .line-1, .projects .line-container .line-1, .contacts .line-container .line-1 {
+    rotate: 45deg;
+    right: -135px;
+    width: 205px;
+}
+
+.skills .line-container .line-2 {
+    width: 111px;
+    left: 70px
+}
+
+.skills .line-container .left-dot {
+    left: 63px
+}
+
+
+
+/* ========================= */
+/* ==== Projects Popup ===== */
+/* ========================= */
+
+.developer-info.projects, .developer-info.contacts {
+    /* opacity: 1; */
+    left: 720px;
+    top: -40px;
+}
+
+.projects .line-container{
+    width: 160px;
+    height: 170px;
+    /* background-color: #999d9e4a; */
+    left: -140px;
+    top: 68px;
+}
+
+.projects .line-container .line-1 {
+    right: -60px;
+    width: 90px;
+}
+
+.projects .line-container .line-2 {
+    width: 120px;
+    left: 11px
+}
+
+.projects .line-container .left-dot {
+    left: 5px
+}
+
+
+.projects .pop-up-box {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 350px;
+}
+
+.projects .pop-up-box .with-border {
+    width: 300px;
+}
+
+
+.carousel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.carousel-window {
+    width: 260px;
+    /* height: 450px; */
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel .project-card {
+   
+    font-size: 15px;
+    min-width: 218px;
+    /* height: 450px; */
+    background: rgba(0,0,0,0.55);
+    border: 1px solid #3ab5ff80;
+    border-radius: 15px;
+    padding: 10px;
+    color: #fff;
+    backdrop-filter: blur(6px);
+    /* background-color: #0cb85781; */
+    
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+    gap: 10px;
+    /* background-color: #c0ffdb81; */
+}
+
+.carousel .project-card .title a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    
+}
+
+.carousel .project-card .title a:hover {
+    text-shadow: 0 0 25px rgb(0, 94, 255), 0 0 35px rgba(0, 234, 255, 0.886);
+}
+
+.carousel .project-card .tag{
+    margin: 10px;
+}
+.carousel .project-card ul {
+    margin: 20px 10px;
+}
+
+.carousel .project-card ul li, .outcome, .desc{
+    text-align: left;
+}
+
+.nav {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #3ab5ff80;
+    color: #3ab5ff;
+    font-size: 18px;
+    /* width: 40px; */
+    /* height: 30px; */
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0;
+    transition: 0.2s;
+}
+
+.nav:hover {
+    background: rgba(0, 133, 177, 0.8);
+}
+
+
+/* ========================= */
+/* ==== Contacts Popup ===== */
+/* ========================= */
+
+
+.developer-info.contacts {
+    /* opacity: 1; */
+
+    left: 750px;
+    top: 50px;
+
+}
+
+
+.pop-up-container.contacts .pop-up-box {
+    height: auto;   
+    padding: 30px 0; 
+}
+
+
+.contacts .line-container{
+    width: 180px;
+    height: 170px;    
+    /* background-color: #999d9e4a; */
+    left: -150px;
+    top: 100px;
+}
+
+.contacts .line-container .line-1 {
+    top: 30px;
+    right: -15px;
+    width: 70px;
+    rotate: 15deg;
+}
+
+.contacts .line-container .line-2 {
+    top: 30px;
+    width: 120px;
+    left: 5px
+}
+
+.contacts .line-container .left-dot {
+    top: 28px;
+    left: -2px
+}
+
+
+
+.contact-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.contact-item label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #3ab5ff;
+}
+
+.contact-item input,
+.contact-item textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #3ab5ff80;
+    border-radius: 8px;
+    padding: 8px;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    resize: none;
+    width: 80%;
+}
+
+.contact-item textarea {
+    min-height: 100px;
+}
+
+.send-btn {
+    width: 50%;
+    padding: 8px;
+    background: var(--cy);
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.send-btn:hover {
+    background: #00a2ff;
+}
