@@ -4,6 +4,7 @@ Futuristic HUD-style portfolio card showcasing a developer’s profile, skills, 
 **Guild of Architected Systems — HUD Portfolio Card**
 
 **Project Overview**
+
 This project is a futuristic HUD-style portfolio card inspired by video game interfaces. It presents a developer’s profile in a visually immersive way, combining RPG-style stats, interactive skill bars, project showcases, and contact functionality. The design emphasizes game-like UI components while serving as a functional portfolio display.
 
 
